@@ -1,0 +1,28 @@
+.register-form{
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    width:20vw;
+    height: 32vw;
+    border-radius: 10%;
+    margin-bottom:0;
+}
+.input-area{
+    margin-top:0.5vw;
+    display: inherit;
+}
+.input-area:focus{
+    outline-style: none;
+    border: 1pc solid  #21a67c;
+}
+
+button{
+    text-decoration: none;
+    border-style: none;
+}
+button:focus{
+    outline:0;
+}
+.login-click{
+    margin:0;
+}

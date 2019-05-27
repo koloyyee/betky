@@ -1,0 +1,29 @@
+.login-form{
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    height: 18vw;
+    border-radius: 3%;
+}
+.input-area{
+    margin:1.5vw;
+    display: inherit;
+}
+.input-area:focus{
+    outline-style: none;
+    border: 1pc solid  #21a67c;
+}
+
+button{
+    text-decoration: none;
+    border-style: none;
+    font-size:0.1em;
+}
+button:focus{
+    outline:0;
+}
+.login-click{
+    position: relative;
+    top:-3vw;
+    margin:0;
+}

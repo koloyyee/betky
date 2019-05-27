@@ -1,0 +1,350 @@
+<html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="/index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <h3>Admin Page</h3>
+        <div id="dealer" name="token"></div>
+        <div id="content">
+                <button id="list-match" type="button" class="btn btn-primary" data-toggle="modal" data-target="#allMatches">List Match</button>
+
+                <div class="modal fade bd-example-modal-xl" id="allMatches" role="dialog" aria-labelledby="allMatchesTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">All Match</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div id="matchInfo" class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal fade bd-example-modal-xl" id="currentBetModal" role="dialog" aria-labelledby="currentBetModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="currentBetModalLabel">Current Bets</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div id="currentBetTable" class="modal-body" >
+                              ...
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMatchModal"> New Match</button>
+                <div class="modal fade" id="newMatchModal" role="dialog" aria-labelledby="newMatchModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newMatchModalLabel">New Match</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/admin/match" method="POST" id="create-match-form">
+                                    <div>
+                                        <label>
+                                            New Match Name:
+                                            <input type="text" name="match_name" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Match Date Time:
+                                            <input type="datetime-local" name="match_date_time" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Home Team Name:
+                                            <input type="text" name="home_team_name" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Away Team Name:
+                                            <input type="text" name="away_team_name" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Home rate:
+                                            <input type="float" name="home_rate" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Away rate:
+                                            <input type="float" name="away_rate" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Home Team Score:
+                                            <input type="number" name="current_home_score" default="0" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Away Team Score:
+                                            <input type="number" name="current_away_score" default="0" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Channel id:
+                                            <select name="channel_id">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="4">5</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type='submit' value="Submit" />
+                                        <input type='reset' value="Clear" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="updateMatch" role="dialog" aria-labelledby="updateMatchLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateMatchLabel">Update Match</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/admin/match" method="POST" id='update-match-form'>
+                                    <div>
+                                        <label>
+                                            Match id:
+                                            <input type="text" name="id" disabled required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Match Name:
+                                            <input type="text" name="match_name" required>
+                                        </label>
+                                    </div>
+                                    <dvi>
+                                        <label>
+                                            Home Team Rate:
+                                            <input type="float" name="home_team_rate" required>
+                                        </label>
+                                    </dvi>
+                                    <div>
+                                        <label>
+                                            Away Team Rate:
+                                            <input type="float" name="away_team_rate" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Home Team Score:
+                                            <input type="number" name="current_home_score" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Away Team Score:
+                                            <input type="number" name="current_away_score" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Match Date Time:
+                                            <input type="datetime-local" name="match_date_time" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Home Team Id:
+                                            <input type="number" name="home_team_id" disabled required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Home Team Name:
+                                            <input type="string" name="home_team_name" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Away Team Id:
+                                            <input type="number" name="away_team_id" disabled required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Away Team Name:
+                                            <input type="string" name="away_team_name" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            Channel Id:
+                                            <input type="number" name="channel_id" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type='submit' value="Submit" />
+                                        <input type='reset' value="Clear" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="confirmResult" role="dialog" aria-labelledby="confirmResultLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmResultLabel">Confirm Match Result</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/admin/result" method="POST" id='create-result-form'>
+                                    <div>
+                                        <label>
+                                            match id:
+                                            <input type="number" name="id" disabled required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            home team name:
+                                            <input type="text" name="home_team_name" disabled required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            home final score:
+                                            <input type="number" name="home_team_score" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            away team name:
+                                            <input type="text" name="away_team_name" disabled required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            away final score:
+                                            <input type="number" name="away_team_score" required>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type='submit' value="Submit" />
+                                        <input type='reset' value="Clear" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="list-completed-match" class="btn btn-primary" data-toggle="modal" data-target="#completeModal"> List Completed Match</button>
+
+                <div class="modal fade bd-example-modal-xl" id="completeModal" role="dialog" aria-labelledby="completeModal" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="completeModalLongTitle">All Completed Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="completeMatch" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <button type="button" id="list-bet-history" class="btn btn-primary" data-toggle="modal" data-target="#betModal">List All Payout</button>
+                
+                <div class="modal fade bd-example-modal-xl" id="betModal" role="dialog" aria-labelledby="betModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="betModalLabel">All Bets</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div id="betTable" class="modal-body" >
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+    <script src="https://unpkg.com/moment"></script>
+    <script src="./js/match.js"></script>
+    <script src="./js/completeMatch.js"></script>
+    <script src="./js/token.js"></script>
+    <script src="./js/bet.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+
+</html>

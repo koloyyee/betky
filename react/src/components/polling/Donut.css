@@ -1,0 +1,32 @@
+.poll-info{
+    color:rgb(96, 96, 96);
+    margin:0px;
+}
+.recharts-surface{
+    padding:0;
+    margin:0;
+}
+
+.team-color {
+    width:1vw;
+    height:1vw;
+}
+.home-team-poll{
+    margin:3vw;
+}
+.away-team-poll{
+    margin:3vw;
+}
+#home-color{
+    background-color: #1da57a;
+}
+#home-color:hover{
+    color: #1da57a;
+}
+
+#away-color{
+    background-color: #f52a35;
+}
+#away-color:hover{
+    color: #f52a35;
+}

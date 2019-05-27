@@ -1,0 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+
+
+#root {
+  background-color: #121212;
+  text-align: center;
+  font-family: 'Gugi', cursive;
+}
+
+.popover {
+  float: right;
+  margin-right: 2vw;
+}
+.ant-layout-content{
+  background-color: #121212;
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+.ant-popover-inner-content{
+    margin:0;
+    padding:0;
+    
+}
+.socket-chat{
+    background-color: rgb(255, 255, 255);
+    width:16vw;
+    border-radius: 15%;
+    min-height: 200px;
+    min-width: 150px;
+    padding-top: 0.3vw;
+}
+#chatroom {
+    height: 20vw;
+    list-style-type: none;
+    overflow-y: auto;
+    border-radius: 5%;
+    border: 1px solid rgb(125, 125, 125);
+    margin-top:0.5vw;
+    margin-right:0.5vw;
+    margin-left:0.5vw;
+    margin-bottom: 0;
+    padding: 0;
+    background-color:#001529;
+    opacity: 60%;
+    
+}
+ul > li{
+    margin:1.1em;
+    width:85%;
+    margin:0;
+}
+
+.message{
+    text-align: left;
+    margin:1.1em;
+    padding:0;
+}
+
+.member_name{
+    color: #1da57a;
+    font-size:0.8em;
+}
+.member_message{
+    font-size:1.2em;
+    margin-left: 1.1em;
+    color:white;
+}
+.input-and-send{
+    margin:0.5vw;
+    display:flex;
+    justify-content: center;
+
+}
+#input-area{
+    width:80%;
+    border:1px solid grey;
+    border-radius: 20em;
+    margin-top:0;
+    margin-bottom:0.5vw;
+    font-family: 'Raleway', sans-serif;
+
+}
+#input-area:focus{
+    outline:none;
+    border:1px solid #1da57a;
+}
+
+#send-button{
+    background:whitesmoke;
+    border-radius: 20em;
+    margin-left:0.1em;
+    margin-right:0.1em;
+    margin-bottom:0.1em;
+    width:20%;
+    padding:0;
+    margin-bottom:0.5vw;
+
+}
+
+.LoginForm{
+   text-align: center
+}
+.affix{
+    border-radius:20%;
+    font-family: 'Raleway', sans-serif;
+
+}
+
+/* Color Theme Swatches in Hex */
+@Element-Space---Concept-Art-1-hex: #367368;
+@Element-Space---Concept-Art-2-hex: #224035;
+@Element-Space---Concept-Art-3-hex: #5E8C6A;
+@Element-Space---Concept-Art-4-hex: #D99A4E;
+@Element-Space---Concept-Art-5-hex: #8C472E;

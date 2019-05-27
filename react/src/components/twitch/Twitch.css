@@ -1,0 +1,24 @@
+.twitch{
+  background-color: #121212;
+  height:100%;
+}
+.player-overlay{
+    height: 40vw;
+    width: 70vw;
+    min-height: 300px;
+    min-width:400px;
+    
+}
+.matchName{
+  position: relative;
+  left:-8vw;
+  color:white;
+  font-size:2em;
+
+}
+.currentScore{
+  position: relative;
+  left:-8vw;
+  color:white;
+  font-size:1.5em;
+}
